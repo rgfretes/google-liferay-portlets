@@ -22,6 +22,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.logging.Level;
@@ -45,7 +46,6 @@ public class GCalendarBean {
             Logger.getLogger(GCalendarBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     public String getDocsFeed(String token, PrivateKey key, String nameSpace, String themePath) {
         String result = "";
@@ -82,16 +82,17 @@ public class GCalendarBean {
             result += "<div class='feed-title'>" + romeFeed.getTitle() + "</div>";
             List<SyndEntryImpl> feedEntryList = romeFeed.getEntries();
             ListIterator<SyndEntryImpl> felIter = feedEntryList.listIterator();
-            result += "<div class='feed-entries'>"+ feedEntryList.size() + "/10 Items Displayed";
+            result += "<div class='feed-entries'>" + feedEntryList.size() + "/10 Items Displayed";
             //read out the Calendar Entries
             String folder = "";
+            //ArrayList<String> calEntries;
             while (felIter.hasNext()) {
+                StringBuffer tempEntry = new StringBuffer();
                 boolean viewed = false;
                 SyndEntryImpl entry = felIter.next();
-                result += "<div class='feed-entry'>"/*<img src='" + themePath + "/arrows/01_plus.png' class='" + nameSpace + "entry-expander feed-entry-expander'>"*/;
+                tempEntry.append("<div class='feed-entry'><span class='feed-entry-title'>")/*<img src='" + themePath + "/arrows/01_plus.png' class='" + nameSpace + "entry-expander feed-entry-expander'>"*/;
                 List catList = entry.getCategories();
                 ListIterator catIter = catList.listIterator();
-                result += "<span class='feed-entry-title'>";
                 while (catIter.hasNext()) {
                     String catEntry = "";
                     SyndCategoryImpl category = (SyndCategoryImpl) catIter.next();
@@ -101,20 +102,21 @@ public class GCalendarBean {
                             catEntry.equals("spreadsheet") ||
                             catEntry.equals("form") ||
                             catEntry.equals("pdf") ||
-                            catEntry.equals("starred")){
-                    result += "<img src='/GoogleDocs/" + catEntry + ".png'/> ";
+                            catEntry.equals("starred")) {
+                        tempEntry.append("<img src='/GoogleDocs/" + catEntry + ".png'/> ");
                     } else if (catEntry.equals("viewed")) {
                         viewed = true;
+                    } else if (!folder.equals(catEntry)) {
+                        tempEntry.append("<img src='/GoogleDocs/folder.png'/>" + catEntry + "<br/>&nbsp&nbsp");
+                        folder = catEntry;
                     } else {
-                       if (!folder.equals(catEntry)) {
-                       result += "<img src='/GoogleDocs/folder.png'/>" + catEntry + "<br/>";
-                       folder = catEntry;
-                       } 
+                        tempEntry.insert(55,"&nbsp&nbsp");
                     }
                 }
-                result += (viewed) ? "" : "<strong>";
-                result += "<a href='" + entry.getLink().replace("http:", "https:")  + "' target='_blank'>" + entry.getTitle() + "</a></span>";
-                result += (viewed) ? "" : "</strong>";
+                result += tempEntry.toString();
+                result += "<a href='" + entry.getLink().replace("http:", "https:") + "' target='_blank'>" + entry.getTitle() + "</a>";
+                result += (viewed) ? "" : "<img src='/GoogleDocs/new.gif'/>";
+                result += "</span>";
                 //SyndContentImpl content = (SyndContentImpl) entry.getDescription();
                 //result += "<div class='feed-entry-content' style='display:none'>" + content.getValue() + "</div>";
                 result += "</div>";
