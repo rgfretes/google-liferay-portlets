@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE display PUBLIC "-//Liferay//DTD Display 5.0.0//EN" "http://www.liferay.com/dtd/liferay-display_5_0_0.dtd">
+<!--
+    Document   : liferay-display.xml
+    Created on : July 3, 2008, 10:47 AM
+    Author     : loope
+    Description:
+        Purpose of the document follows.
+-->
+
+<display>
+	<category name="Google">
+		<portlet id="GoogleCal" />
+	</category>
+</display>
