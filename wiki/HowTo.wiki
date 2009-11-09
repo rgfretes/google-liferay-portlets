@@ -1,12 +1,13 @@
 #summary How do I use this code?
 
 
-= Google Docs Setup =
+= Google Portlets Setup =
 
 I suggest you use Netbeans with the [http://portalpack.netbeans.org/ Portal Pack]. That's what I used to develop it.
 
-You'll need the following libraries to build it:
+You'll need the following libraries to build them:
 
+==Docs==
  * portlet-api-1.0 ([http://portalpack.netbeans.org/ Portal Pack])
  * portlettaglib ([http://portalpack.netbeans.org/ Portal Pack])
  * GData-Docs-2.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
@@ -19,6 +20,33 @@ You'll need the following libraries to build it:
  * liferay portal-kernel ([http://liferay.com Liferay])
  * liferay portal-service ([http://liferay.com Liferay])
  * liferay util-java ([http://liferay.com Liferay])
+
+==Mail==
+ * portlet-api-1.0 ([http://portalpack.netbeans.org/ Portal Pack])
+ * portlettaglib ([http://portalpack.netbeans.org/ Portal Pack])
+ * gdata-core-1.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * gdata-client-1.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * gdata-client-meta-1.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * Rome-1.0 ([https://rome.dev.java.net/ Rome])
+ * jdom ([http://www.jdom.org/dist/binary/jdom-1.1.1.tar.gz jdom])
+ * liferay portal-kernel ([http://liferay.com Liferay])
+ * liferay portal-service ([http://liferay.com Liferay])
+ * liferay util-java ([http://liferay.com Liferay])
+
+==Calendar==
+ * portlet-api-1.0 ([http://portalpack.netbeans.org/ Portal Pack])
+ * portlettaglib ([http://portalpack.netbeans.org/ Portal Pack])
+ * GData-calendar-2.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * GData-calendar-Meta-2.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * gdata-core-1.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * gdata-client-1.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * gdata-client-meta-1.0 ([http://gdata-java-client.googlecode.com/files/gdata-src.java-1.29.0.java.zip Gdata])
+ * Rome-1.0 ([https://rome.dev.java.net/ Rome])
+ * jdom ([http://www.jdom.org/dist/binary/jdom-1.1.1.tar.gz jdom])
+ * liferay portal-kernel ([http://liferay.com Liferay])
+ * liferay portal-service ([http://liferay.com Liferay])
+ * liferay util-java ([http://liferay.com Liferay])
+
 
 Go [http://code.google.com/apis/accounts/docs/RegistrationForWebAppsAuto.html#new register with google] and setup your certificate then import into your keystore using keytool.
 
