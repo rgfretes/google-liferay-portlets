@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<portlet-app xmlns='http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd' version='1.0'>
+	<portlet>
+		<description>Google Mail</description>
+		<portlet-name>GoogleMail</portlet-name>
+		<display-name>Google Mail</display-name>
+		<portlet-class>com.GoogleMail.GoogleMail</portlet-class>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+			<portlet-mode>EDIT</portlet-mode>
+			<portlet-mode>HELP</portlet-mode>
+		</supports>
+		<resource-bundle>com.GoogleMail.messages</resource-bundle>
+		<portlet-info>
+			<title>Google Mail</title>
+			<short-title>Google Mail</short-title>
+		</portlet-info>
+	</portlet>
+</portlet-app>
