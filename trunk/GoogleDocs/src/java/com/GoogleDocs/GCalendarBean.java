@@ -82,13 +82,15 @@ public class GCalendarBean {
             result += "<div class='feed-title'>" + romeFeed.getTitle() + "</div>";
             List<SyndEntryImpl> feedEntryList = romeFeed.getEntries();
             ListIterator<SyndEntryImpl> felIter = feedEntryList.listIterator();
-            result += "<div class='feed-entries'>" + feedEntryList.size() + "/10 Items Displayed";
+            result += "<div class='feed-entries'>";
             //read out the Calendar Entries
             String folder = "";
+            int hiddenNum = 0;
             //ArrayList<String> calEntries;
             while (felIter.hasNext()) {
                 StringBuffer tempEntry = new StringBuffer();
                 boolean viewed = false;
+                boolean hidden = false;
                 SyndEntryImpl entry = felIter.next();
                 tempEntry.append("<div class='feed-entry'><span class='feed-entry-title'>")/*<img src='" + themePath + "/arrows/01_plus.png' class='" + nameSpace + "entry-expander feed-entry-expander'>"*/;
                 List catList = entry.getCategories();
@@ -106,20 +108,30 @@ public class GCalendarBean {
                         tempEntry.append("<img src='/GoogleDocs/" + catEntry + ".png'/> ");
                     } else if (catEntry.equals("viewed")) {
                         viewed = true;
+                    } else if (catEntry.equals("hidden")) {
+                        //Don't show hidden files!
+                        hidden = true;
+                        hiddenNum++;
                     } else if (!folder.equals(catEntry)) {
                         tempEntry.append("<img src='/GoogleDocs/folder.png'/>" + catEntry + "<br/>&nbsp&nbsp");
                         folder = catEntry;
                     } else {
-                        tempEntry.insert(55,"&nbsp&nbsp");
+                        tempEntry.insert(55, "&nbsp&nbsp");
                     }
                 }
-                result += tempEntry.toString();
-                result += "<a href='" + entry.getLink().replace("http:", "https:") + "' target='_blank'>" + entry.getTitle() + "</a>";
-                result += (viewed) ? "" : "<img src='/GoogleDocs/new.gif'/>";
-                result += "</span>";
-                //SyndContentImpl content = (SyndContentImpl) entry.getDescription();
-                //result += "<div class='feed-entry-content' style='display:none'>" + content.getValue() + "</div>";
-                result += "</div>";
+                if (!hidden) {
+                    result += tempEntry.toString();
+                    result += "<a href='" + entry.getLink().replace("http:", "https:") + "' target='_blank'>" + entry.getTitle() + "</a>";
+                    result += (viewed) ? "" : "<img src='/GoogleDocs/new.gif'/>";
+                    result += "</span>";
+                    //SyndContentImpl content = (SyndContentImpl) entry.getDescription();
+                    //result += "<div class='feed-entry-content' style='display:none'>" + content.getValue() + "</div>";
+                    result += "</div>";
+                }
+            }
+            result += (feedEntryList.size() - hiddenNum) + "/10 Items Displayed";
+            if (0 < hiddenNum) {
+                result += " (" + hiddenNum + " Items Hidden)";
             }
             result += "</div>";
             //result += "</BR>" + token; //debug
