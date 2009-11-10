@@ -75,7 +75,7 @@ public class GCalendarBean {
 
         try {
             // Create the service and authenticate it with our token
-            CalendarService gs = new CalendarService("UP-Liferay-5.1", "https", "up.edu");
+            CalendarService gs = new CalendarService("YourApp", "https", "Yourdomain.com");
             gs.setAuthSubToken(token, key);
             URL feedURL = new URL("https", "www.google.com", "/calendar/feeds/default/owncalendars/full");
             try { // Try to get the feed
