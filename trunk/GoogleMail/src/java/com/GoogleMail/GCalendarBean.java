@@ -60,7 +60,7 @@ public class GCalendarBean {
 
         try {
 
-            GoogleService gs = new GoogleService("UP-Liferay-5.1", "Mail", "https", "up.edu");
+            GoogleService gs = new GoogleService("YourApp", "Mail", "https", "yourdomain.com");
             gs.setAuthSubToken(token, key);
             URL feedURL = new URL("https://mail.google.com/mail/feed/atom/");
 
