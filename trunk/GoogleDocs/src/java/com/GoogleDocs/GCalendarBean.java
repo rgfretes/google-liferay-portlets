@@ -60,7 +60,7 @@ public class GCalendarBean {
 
         try {
 
-            GoogleService gs = new GoogleService("UP-Liferay-5.1", "Docs", "https", "up.edu");
+            GoogleService gs = new GoogleService("YourApp", "Docs", "https", "Yourdomain.com");
             gs.setAuthSubToken(token, key);
             URL feedURL = new URL("https://docs.google.com/feeds/documents/private/full?showfolders=false&max-results=10");
 
