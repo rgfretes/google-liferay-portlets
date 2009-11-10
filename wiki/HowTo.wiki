@@ -53,9 +53,9 @@ Go [http://code.google.com/apis/accounts/docs/RegistrationForWebAppsAuto.html#ne
 Checkout the project, edit the keytool.java to match your keytool location and password.
 
 Alter this line in the GCalendarBean.java, putting in your app name (Portal Name) and domain that you registered.
-
+{{{
 GoogleService gs = new GoogleService("YourApp", "Docs", "https", "Yourdomain.com");
-
+}}}
 Make whatever other modifications may be necessary. (The current code is built for liferay 5.1.2)
 
 Build and Deploy!
